@@ -22,6 +22,7 @@
             n[1, 1] = 5;
 
             Matrix<int> res = m * n;
+            Console.WriteLine();
         }
     }
 }
