@@ -49,8 +49,9 @@
     <Compile Include="Points 1-4\Path.cs" />
     <Compile Include="Points 1-4\PathStorage.cs" />
     <Compile Include="Points 1-4\Point3D.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="TestingAllExams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Version 11\Version.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

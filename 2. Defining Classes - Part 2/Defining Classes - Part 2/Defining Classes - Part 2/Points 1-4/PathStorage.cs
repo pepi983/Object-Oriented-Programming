@@ -17,6 +17,7 @@
 
         public static Path LoadPath(string filePath)
         {
+            filePath = "..//..//" + filePath + ".txt";
             Path path = new Path();
 
             using (StreamReader sr = new StreamReader(filePath))

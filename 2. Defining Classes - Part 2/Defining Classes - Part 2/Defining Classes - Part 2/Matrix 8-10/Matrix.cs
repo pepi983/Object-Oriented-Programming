@@ -154,5 +154,25 @@
             }
             return !isTrue;
         }
+
+        public override string ToString()
+        {
+            string result = string.Empty;
+
+            for (int row = 0; row < this.Rows; row++)
+            {
+                for (int col = 0; col < this.Cols; col++)
+                {
+                    result += this.matrix[row, col];
+                    if (col < this.Cols-1)
+                    {
+                        result += " ";
+                    }
+                }
+                result += "\n";
+            }
+
+            return result;
+        }
     }
 }
