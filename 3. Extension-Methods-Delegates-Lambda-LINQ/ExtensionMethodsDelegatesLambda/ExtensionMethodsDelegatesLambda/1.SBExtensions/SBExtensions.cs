@@ -1,10 +1,10 @@
-﻿namespace ExtensionMethodsDelegatesLambda.Extensions
+﻿namespace Problem1Substring.SBExtensions
 {
     using System;
     using System.Collections.Generic;
     using System.Text;
 
-    public static class Extensions
+    public static class SBExtensions
     {
         public static StringBuilder Substring (this StringBuilder sb, int index, int length)
         {
@@ -14,16 +14,6 @@
                 res.Append(sb[i]);
             }
             return res;
-        }
-
-        public static int Sum<T>(this IEnumerable<T> list)
-        {
-            int res = 0;
-            foreach (var item in list)
-            {
-                res += item;
-            }
-            return 0;
         }
     }
 }
