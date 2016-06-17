@@ -47,6 +47,7 @@
     <Compile Include="1.SBExtensions\SBExtensions.cs" />
     <Compile Include="3-5,9.Student\Student.cs" />
     <Compile Include="7.Timer\Timer.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="TestingExtensionMethodsDelegatesLamda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

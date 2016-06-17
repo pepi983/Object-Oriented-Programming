@@ -9,26 +9,38 @@
     using Problem2IENumExtensions.Extensions;
     using Problem3FirstBeforeLast.Student;
     using ExtensionMethodsDelegatesLambda.Timer;
+    using ExtensionMethodsDelegatesLambda.Extensions;
+
     public class TestingExtensionMethodsDelegatesLamda
     {
         static void Main(string[] args)
         {
-            //TestProblemFrom3To5Students();
-            //TestProblem6DivisibleBy7And3();
-            //TestProblem7Timer();
-            //TestProblemFrom9To15StudentGroups();
-            //TestProblem17LongestString();
+            TestProblem1SubstringExtensions();
+            TestProblem2IEnumerableExtensions();
+            TestProblemFrom3To5Students();
+            TestProblem6DivisibleBy7And3();
+            TestProblem7Timer();
+            TestProblemFrom9To15StudentGroups();
+            TestProblem17LongestString();
             TestProblem18GroupedByGroupNumber();
         }
 
         static void TestProblem1SubstringExtensions()
         {
-
+            Console.WriteLine("Problem 1");
+            StringBuilder str = new StringBuilder();
+            str.Append("This homework consumed all of my time :3");
+            Console.WriteLine(str.Substring(3, 10));
         }
 
         static void TestProblem2IEnumerableExtensions()
         {
-
+            List<int> ints = new List<int>() { 3, 4, 5, 6, 21, 61 };
+            Console.WriteLine("Sum: " + ints.Sum());
+            Console.WriteLine("Product: " + ints.Product());
+            Console.WriteLine("Min: " + ints.Min());
+            Console.WriteLine("Max: " + ints.Max());
+            Console.WriteLine("Avarage: " + ints.Avarage());
         }
 
         static void TestProblemFrom3To5Students()
@@ -41,6 +53,7 @@
                 new Student("Hrago", "Aetrov", 55),
                 new Student("Kolyo", "Ficheto", 23)
             };
+            Console.WriteLine("Problem 3");
 
             //Problem 3. Write a method that from a given array of students finds all students whose first name is before its last name alphabetically.
             var sortedStudents =
@@ -52,7 +65,7 @@
             {
                 Console.WriteLine(st);
             }
-
+            Console.WriteLine("Problem 4");
             //Problem 4. Age range
             var studentsBetweenAge =
                 from student in students
@@ -63,7 +76,7 @@
             {
                 Console.WriteLine(st);
             }
-
+            Console.WriteLine("Problem 5");
             //Problem 5. Order students
             Console.WriteLine("Lamda");
             //Lamda
@@ -92,6 +105,7 @@
 
         static void TestProblem6DivisibleBy7And3()
         {
+            Console.WriteLine("Problem 6");
             int[] arr = new int[] { 2, 5, 10, 7, 14, 32, 64, 2323, 15 , 21, 63};
 
             Console.WriteLine("LAMDA");
@@ -119,6 +133,7 @@
 
         static void TestProblem7Timer()
         {
+            Console.WriteLine("Problem 7: Timer");
             var timer = new Timer("Makaroni", 1000, 3000);
         }
 
@@ -156,6 +171,7 @@
 
             //Problem 9
             //Getting students from group 2 with Lambda
+            Console.WriteLine("Problem 9");
             var studentsFromGroup2 = studentList.Where(st => st.GroupNumber == 2)
                                                 .ToList();
             //Ordering students by first name with LINQ
@@ -163,18 +179,31 @@
                     from st in studentList
                     orderby st.FirstName ascending
                     select st;
+            foreach (var st in studentsFromGroup2)
+            {
+                Console.WriteLine(st);
+            }
+            Console.WriteLine("Problem 11");
             //Problem 11
             var studentsWithAbv =
                 from st in studentList
                 where st.Email.EndsWith("abv.com")
                 select st;
-
+            foreach (var item in studentsWithAbv)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("Problem 12");
             //Problem 12
             var studentsEmail =
                 from st in studentList
                 select st.PhoneNumber;
-
-            //Problem 12
+            foreach (var item in studentsEmail)
+            {
+                Console.WriteLine(item);
+            }
+            //Problem 13
+            Console.WriteLine("Problem 13");
             var studentsWith1Mark6 =
                 from st in studentList
                 where st.Marks.Contains(6)
@@ -183,18 +212,32 @@
                     FullName = st.FirstName + " " + st.LastName,
                     Marks = st.Marks
                 };
+            foreach (var item in studentsWith1Mark6)
+            {
+                Console.WriteLine(item.FullName);
+            }
             //Problem 14
+            Console.WriteLine();
+            Console.WriteLine("Problem 14");
             var studentsWith2Marks2 =
                 from st in studentList
                 where st.Marks.Count == 2 && st.Marks[0] == 2 && st.Marks[1] == 2
                 select st;
-
+            foreach (var item in studentsWith2Marks2)
+            {
+                Console.WriteLine(item);
+            }
             //Problem 15. Extract marks
+            Console.WriteLine("Problem 15");
+
             var marksFrom2006 =
                 from st in studentList
                 where st.FaculcyNumber.ToString()[5] == '0' && st.FaculcyNumber.ToString()[6] == '6'
                 select st;
-            Console.WriteLine();
+            foreach (var item in marksFrom2006)
+            {
+                Console.WriteLine(item);
+            }
         }
 
         static void TestProblem17LongestString()
@@ -203,8 +246,9 @@
                                          "hard", "to", "think", "about", ":)"};
 
             string longest = arrOfStr.OrderByDescending(s => s.Length).First();
+            Console.WriteLine("Problem 17");
 
-            Console.WriteLine();
+            Console.WriteLine("Longest string is: " + longest);
             
         }
 
@@ -218,13 +262,29 @@
                 new Student("Hrago", "Aetrov", 55, 1234216, "Hrago@abv.com", 1, "0884083213"),
                 new Student("Kolyo", "Ficheto", 23, 1634256, "Kolyo@gosho.com", 2, "0884011123")
             };
-
-            var st =
+            //Problem 18
+            Console.WriteLine("Problem 18");
+            var groupedStudents =
                 from std in studentList
-                orderby std.GroupNumber ascending
-                join x in studentList on std.GroupNumber equals x.GroupNumber
-                select x;
-            Console.WriteLine();
+                group std by std.GroupNumber;
+            int i = 1;
+            foreach (var students in groupedStudents)
+            {
+                Console.WriteLine("Group {0}", i);
+                foreach (var student in students)
+                {
+                    if (i == 0)
+                    {
+                        Console.WriteLine(student.GroupNumber);
+                    }
+                    Console.WriteLine(student.FirstName + " " + student.LastName);
+                }
+                Console.WriteLine();
+                i++;
+            }
+            Console.WriteLine("Problem 19");
+            //Problem 19
+            studentList.GroupedByGroupNumber();
         }
     }
 }
